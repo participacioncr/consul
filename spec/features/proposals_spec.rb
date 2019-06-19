@@ -43,10 +43,6 @@ describe "Proposals" do
       Setting["featured_proposals_number"] = 3
     end
 
-    after do
-      Setting["feature.allow_images"] = nil
-    end
-
     scenario "Lists featured and regular proposals" do
       featured_proposals = create_featured_proposals
       proposals = [create(:proposal), create(:proposal), create(:proposal)]
@@ -632,7 +628,6 @@ describe "Proposals" do
 
     context "Special interface translation behaviour" do
       before { Setting["feature.translation_interface"] = true }
-      after { Setting["feature.translation_interface"] = nil }
 
       scenario "Cant manage translations" do
         proposal = create(:proposal)
@@ -774,11 +769,6 @@ describe "Proposals" do
       before do
         Setting["feature.user.recommendations"] = true
         Setting["feature.user.recommendations_on_proposals"] = true
-      end
-
-      after do
-        Setting["feature.user.recommendations"] = nil
-        Setting["feature.user.recommendations_on_proposals"] = nil
       end
 
       scenario "can't be sorted if there's no logged user" do
@@ -1957,10 +1947,6 @@ describe "Successful proposals" do
 
     before do
       Setting["feature.user.skip_verification"] = "true"
-    end
-
-    after do
-      Setting["feature.user.skip_verification"] = nil
     end
 
     scenario "Create" do

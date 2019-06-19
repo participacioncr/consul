@@ -17,10 +17,6 @@ describe "Budget Investments" do
     Setting["feature.allow_images"] = true
   end
 
-  after do
-    Setting["feature.allow_images"] = nil
-  end
-
   context "Concerns" do
     it_behaves_like "notifiable in-app", Budget::Investment
     it_behaves_like "relationable", Budget::Investment
