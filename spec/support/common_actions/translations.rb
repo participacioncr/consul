@@ -48,10 +48,10 @@ module Translations
         expect(page).to have_field field_for(field, locale), with: with
         click_link class: "fullscreen-toggle"
       elsif textarea_type == :ckeditor
-        within("div.js-globalize-attribute[data-locale='#{locale}'] .ckeditor [id$='#{field}']") do
-          # Wait longer for iframe initialization
-          expect(page).to have_selector "iframe.cke_wysiwyg_frame", wait: 5
-          within_frame(textarea_fields.keys.index(field)) { expect(page).to have_content with }
+        textarea_name = field_for(field, locale, visible: false)
+
+        within("div.js-globalize-attribute[data-locale='#{locale}']") do
+          within("[aria-label~='#{textarea_name}']") { expect(page).to have_content with }
         end
       end
     end
