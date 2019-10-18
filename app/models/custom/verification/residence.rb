@@ -22,8 +22,12 @@ class Verification::Residence
 
   private
 
+    #def valid_postal_code?
+    #  postal_code =~ /^280/
+    #end
+
     def valid_postal_code?
-      postal_code =~ /^280/
+      postal_code =~ /^13/
     end
 
 end
