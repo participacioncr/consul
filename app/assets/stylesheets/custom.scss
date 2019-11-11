@@ -6,12 +6,20 @@
 
 /*Modificación pruebas*/
 
-.top-links, .subnavigation {
-	background: #dd3333;
+.top-links {
+	background: #000;
 }
 
-.subnavigation a, .subnavigation a:hover{
-color: #fff;
+.top-links a:hover{
+	color: white;
+}
+
+.subnavigation  {
+	background: white;
+}
+
+header, .top-bar {
+    background: #b23023 !important;
 }
 
 .home-page h3.title, .custom-page h3.title{
@@ -38,17 +46,10 @@ a:hover {
 	background: #f4f4f5;
 }
 
-header{
-	background: #fff;
+.auth-image {
+    background: #000 url(/assets/landings/landing_registro_red.jpg) !important;
+    background-repeat: no-repeat !important;
+	-webkit-background-size: cover !important;
+	background-size: cover !important;
 }
-
-.top-bar{
-background: #fff !important;
-}
-
-.top-bar .menu > li a{
-color: #dd3333;
-}
-
-
 
