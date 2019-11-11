@@ -35,7 +35,7 @@ a:hover {
 }
 
 .button {
-    background: #e1474d;
+    background: #b23023;
 }
 
 .button:hover, .button:focus {
@@ -53,3 +53,22 @@ a:hover {
 	background-size: cover !important;
 }
 
+.lead{
+	font-weight: 700;
+}
+
+.home-page .background-header {
+    display: none;
+}
+
+@media print, screen and (min-width: 40em){
+.home-page .jumbo .lead {
+    font-size: 3.75rem;
+    line-height: 3.75rem;
+}
+
+.home-page .jumbo  {
+    background: #e2846b url(/assets/header.jpg);
+    background-size: cover;
+}
+}
