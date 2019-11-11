@@ -9,7 +9,7 @@
   <body class="auth-page">
     <%= setting["html.per_page_code_body"].try(:html_safe) %>
     <div class="wrapper">
-      <div class="auth-image small-12 medium-4 column">
+      <div class="auth-image small-12 medium-5 column">
         <h1 class="logo margin">
           <%= link_to root_path do %>
             <%= image_tag(image_path_for("logo_header.png"), class: "float-left", alt: t("layouts.header.logo")) %>
@@ -17,7 +17,7 @@
         </h1>
       </div>
 
-      <div class="small-12 medium-8 column">
+      <div class="small-12 medium-7 column">
         <div class="row">
           <div class="small-12 medium-9 large-7 small-centered column">
             <div class="auth-form margin">
