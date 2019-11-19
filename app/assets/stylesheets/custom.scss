@@ -14,9 +14,7 @@
 	color: white;
 }
 
-.subnavigation  {
-	background: white;
-}
+
 
 header, .top-bar {
     background: #b23023 !important;
@@ -62,15 +60,20 @@ a:hover {
 }
 
 @media print, screen and (min-width: 40em){
-.home-page .jumbo .lead {
-    font-size: 3.75rem;
-    line-height: 3.75rem;
-}
+	.home-page .jumbo .lead {
+	    font-size: 3.75rem;
+	    line-height: 3.75rem;
+	}
 
-.home-page .jumbo  {
-    background: #e2846b url(/assets/header-08a3fffef37eafc88116344039d1a51c74303746659d056b2d711cf39c18ce76.jpg);
-    background-size: cover;
-}
+	.home-page .jumbo  {
+	    background: #e2846b url(/assets/header-08a3fffef37eafc88116344039d1a51c74303746659d056b2d711cf39c18ce76.jpg);
+	    background-size: cover;
+	}
+
+	.subnavigation  {
+		background: white;
+	}
+
 }
 
 .subfooter {
@@ -84,6 +87,7 @@ a:hover {
     color: #fff;
     font-weight: bold;
 }
+
 
 /*Responsive*/
 @media only screen and (max-width: 600px) {
