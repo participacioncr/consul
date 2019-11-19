@@ -18,6 +18,9 @@
       <span data-responsive-toggle="responsive-menu" data-hide-for="medium" class="float-right">
         <span class="menu-icon dark" data-toggle></span>
         <%= t("application.menu") %>
+
+        
+            
       </span>
 
       <div class="top-bar-title">
@@ -33,31 +36,7 @@
             <%= render "layouts/notification_item" %>
             <%= render "devise/menu/login_items" %>
             
-            <li>
-              <%= layout_menu_link_to t("layouts.header.proposals"),
-                                      proposals_path,
-                                      controller.class == ProposalsController,
-                                      accesskey: "2",
-                                      title: t("shared.go_to_page") + t("layouts.header.proposals") %>
-            </li>
-          
-            <li>
-              <%= layout_menu_link_to t("layouts.header.poll_questions"),
-                                        polls_path,
-                                        controller_name == "polls" || (controller_name == "questions" && controller.class.parent == Polls),
-                                        accesskey: "3",
-                                        title: t("shared.go_to_page") + t("layouts.header.poll_questions") %>
-            </li>
 
-            <%= raw content_block("subnavigation_right", I18n.locale) %>
-
-            <li>
-              <%= layout_menu_link_to t("layouts.header.help"),
-                                      help_path,
-                                      current_page?(help_path),
-                                      accesskey: "6",
-                                      title: t("shared.go_to_page") + t("layouts.header.help") %>
-            </li>
 
           </ul>
 
