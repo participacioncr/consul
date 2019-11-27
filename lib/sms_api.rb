@@ -8,7 +8,7 @@ class SMSApi
 
   def url
     return "" unless end_point_available?
-    open(Rails.application.secrets.sms_end_point).base_uri.to_s
+    open("https://wwsspadron.ciudadreal.es/server_sms.php?wsdl").base_uri.to_s
   end
 
   def authorization
@@ -18,7 +18,7 @@ class SMSApi
   def sms_deliver(phone, code)
     return stubbed_response unless end_point_available?
 
-    response = client.call(:enviar_sms_simples, message: request(phone, code))
+    response = client.call(:enviar_sms_simples, :message => { "MyComplexType" => { "destino" => phone, "codigo" => code } })
     success?(response)
   end
 
@@ -30,11 +30,19 @@ class SMSApi
   end
 
   def success?(response)
+=begin
+    raise(response.inspect)
+
+    fail 
+=end
     response.body[:respuesta_sms][:respuesta_servicio_externo][:texto_respuesta] == "Success"
   end
 
   def end_point_available?
+    true
+=begin
     Rails.env.staging? || Rails.env.preproduction? || Rails.env.production?
+=end 
   end
 
   def stubbed_response

@@ -1,17 +1,10 @@
 include DocumentParser
 class RemoteCensusApi
 
-  def call(document_type, document_number, date_of_birth, postal_code)
-
+ def call(document_type, document_number, date_of_birth, postal_code)
     response = nil
     get_document_number_variants(document_type, document_number).each do |variant|
-    response = Response.new(get_response_body(document_type, variant, date_of_birth, postal_code))
-
-      if variant=="05683500Q"
-        raise("Depurando ... " + response.inspect)
-        fail 
-      end
-
+      response = Response.new(get_response_body(document_type, variant, date_of_birth, postal_code))
       return response if response.valid?
     end
     response
@@ -56,7 +49,7 @@ class RemoteCensusApi
       path_value = Setting["remote_census.response.gender"]
 
       case extract_value(path_value)
-      when "Varón"
+      when "Hombre"
         "male"
       when "Mujer"
         "female"
