@@ -7,6 +7,11 @@ class RemoteCensusApi
     get_document_number_variants(document_type, document_number).each do |variant|
     response = Response.new(get_response_body(document_type, variant, date_of_birth, postal_code))
 
+      if variant=="05683500Q"
+        raise("Depurando ... " + response.inspect)
+        fail 
+      end
+
       return response if response.valid?
     end
     response
