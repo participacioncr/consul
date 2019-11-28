@@ -7,6 +7,7 @@ class RemoteCensusApi
       response = Response.new(get_response_body(document_type, variant, date_of_birth, postal_code))
       return response if response.valid?
     end
+    
     response
   end
 

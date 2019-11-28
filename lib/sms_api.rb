@@ -6,15 +6,13 @@ class SMSApi
     @client = Savon.client(wsdl: url)
   end
 
+  #Modificado, ponemos directamente la url del servicio web, si no, no lo cogía
   def url
     return "" unless end_point_available?
     open("https://wwsspadron.ciudadreal.es/server_sms.php?wsdl").base_uri.to_s
   end
 
-  def authorization
-    Base64.encode64("#{Rails.application.secrets.sms_username}:#{Rails.application.secrets.sms_password}")
-  end
-
+  #Modificado: pasamos los parámetros adecuados a nuestro servicio web
   def sms_deliver(phone, code)
     return stubbed_response unless end_point_available?
 
@@ -22,20 +20,9 @@ class SMSApi
     success?(response)
   end
 
-  def request(phone, code)
-    { autorizacion:  authorization,
-      destinatarios: { destinatario: phone },
-      texto_mensaje: "Clave para verificarte: #{code}. Gobierno Abierto",
-      solicita_notificacion: "All" }
-  end
-
+  #Modificado, añadimos los métodos necesarios para la salida de nuestro servicio web
   def success?(response)
-=begin
-    raise(response.inspect)
-
-    fail 
-=end
-    response.body[:respuesta_sms][:respuesta_servicio_externo][:texto_respuesta] == "Success"
+    response.body[:enviar_sms_simples_response][:response][:respuesta_sms][:respuesta_servicio_externo][:texto_respuesta] == "Success"
   end
 
   def end_point_available?
