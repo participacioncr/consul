@@ -26,10 +26,7 @@ class SMSApi
   end
 
   def end_point_available?
-    true
-=begin
     Rails.env.staging? || Rails.env.preproduction? || Rails.env.production?
-=end 
   end
 
   def stubbed_response
