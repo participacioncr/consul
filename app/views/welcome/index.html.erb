@@ -16,7 +16,7 @@
 <%= render "header", header: @header %>
 
 <main>
-  <%= render "feeds" %>
+  
 
   <div class="row">
     <% if @cards.any? %>
@@ -31,6 +31,8 @@
       </div>
     <% end %>
   </div>
+
+  <%= render "feeds" %>
 
   <% if feature?("user.recommendations") && (@recommended_debates.present? || @recommended_proposals.present?) %>
     <%= render "recommended",
