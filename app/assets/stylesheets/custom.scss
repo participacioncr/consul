@@ -17,7 +17,8 @@
 
 
 header, .top-bar {
-    background: #b23023 !important;
+    /*background: #b23023 !important;*/
+    background: #934054 !important;
 }
 
 .home-page h3.title, .custom-page h3.title{
@@ -33,7 +34,9 @@ a:hover {
 }
 
 .button {
-    background: #b23023;
+    /*background: #b23023;*/
+    background: white;
+    color: black;
 }
 
 .button:hover, .button:focus {
@@ -63,6 +66,8 @@ a:hover {
 	.home-page .jumbo .lead {
 	    font-size: 3.75rem;
 	    line-height: 3.75rem;
+	    margin-top: 1em;
+    	margin-bottom: 1em;
 	}
 
 	.home-page .jumbo  {
