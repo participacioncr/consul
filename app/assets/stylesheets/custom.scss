@@ -17,8 +17,9 @@
 
 
 header, .top-bar {
-    background: #b23023 !important;
-    /*background: #934054 !important;*/
+/* Cambios 6 centenario*/
+    /*background: #b23023 !important;*/
+    background: #a53c5b !important;
 }
 
 .home-page h3.title, .custom-page h3.title{
@@ -34,8 +35,9 @@ a:hover {
 }
 
 .button {
-    background: #b23023; 
-    /*background: white;*/
+    /* Cambios 6 centenario*/
+    /*background: #b23023;*/ 
+    background: white;
     color: black;
 }
 
@@ -66,13 +68,15 @@ a:hover {
 	.home-page .jumbo .lead {
 	    font-size: 3.75rem;
 	    line-height: 3.75rem;
-	    /*margin-top: 1em;
-    	margin-bottom: 1em;*/
+	    /* Cambios 6 centenario*/
+	    margin-top: 1em;
+    	margin-bottom: 1em;
 	}
 
 	.home-page .jumbo  {
-	    background: #e2846b url(/assets/header-08a3fffef37eafc88116344039d1a51c74303746659d056b2d711cf39c18ce76.jpg);
-	    /*background: #e2846b url(/assets/header_600-9c7ccc70a5992e29867b05df5344be16e4804ecd0f3abd6014c0771ba1178479.jpg);*/
+	    /* Cambios 6 centenario*/
+	    /*background: #e2846b url(/assets/header-08a3fffef37eafc88116344039d1a51c74303746659d056b2d711cf39c18ce76.jpg);*/
+	    background: #e2846b url(/assets/header_600_b-29ce91abb1b7f026d0676d6dd49032c531dad0044872fe227c38949347e2cffc.jpg);
 	    background-size: cover;
 	}
 
