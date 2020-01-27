@@ -50,10 +50,12 @@ a:hover {
 }
 
 .home-page .jumbo {
-    background: #e2846b url(/assets/header_600_b-29ce91abb1b7f026d0676d6dd49032c531dad0044872fe227c38949347e2cffc.jpg);
-    background-position: bottom;
+/* Cambios 6 centenario*/
+    background: #a53c5b url(/assets/header_600_responsive-d54642c3ce10057f934ed580ec1ade95c3e2c5f6b2b4e206568c317287c9e125.jpg);
     background-repeat: no-repeat;
-    padding-bottom: 4.5rem;
+    padding-bottom: 5.5rem;
+    background-size: 22em;
+    padding-top: 0.5em;
 }
 
 .auth-image {
