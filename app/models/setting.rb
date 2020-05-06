@@ -35,7 +35,7 @@ class Setting < ApplicationRecord
     end
 
     def []=(key, value)
-      setting = where(key: key).first || new(key: key)
+      setting = find_by(key: key) || new(key: key)
       setting.value = value.presence
       setting.save!
       value
@@ -50,7 +50,7 @@ class Setting < ApplicationRecord
     end
 
     def remove(key)
-      setting = where(key: key).first
+      setting = find_by(key: key)
       setting.destroy if setting.present?
     end
 
@@ -84,6 +84,7 @@ class Setting < ApplicationRecord
         "feature.facebook_login": true,
         "feature.google_login": true,
         "feature.twitter_login": true,
+        "feature.wordpress_login": false,
         "feature.public_stats": true,
         "feature.signature_sheets": true,
         "feature.user.recommendations": true,
@@ -99,6 +100,7 @@ class Setting < ApplicationRecord
         "feature.translation_interface": nil,
         "feature.remote_census": nil,
         "feature.valuation_comment_notification": true,
+        "feature.graphql_api": true,
         "homepage.widgets.feeds.debates": true,
         "homepage.widgets.feeds.processes": true,
         "homepage.widgets.feeds.proposals": true,
@@ -142,7 +144,6 @@ class Setting < ApplicationRecord
         "max_ratio_anon_votes_on_debates": 50,
         "max_votes_for_debate_edit": 1000,
         "max_votes_for_proposal_edit": 1000,
-        "max_votes_for_people_proposal_edit": 1000,
         "comments_body_max_length": 1000,
         "proposal_code_prefix": "CONSUL",
         "votes_for_proposal_success": 10000,
@@ -170,7 +171,7 @@ class Setting < ApplicationRecord
         "hot_score_period_in_days": 31,
         "related_content_score_threshold": -0.3,
         "featured_proposals_number": 3,
-        "dashboard.emails": nil,
+        "feature.dashboard.notification_emails": nil,
         "remote_census.general.endpoint": "",
         "remote_census.request.method_name": "",
         "remote_census.request.structure": "",

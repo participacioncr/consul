@@ -31,6 +31,7 @@ class Officing::BaseController < ApplicationController
 
     def verify_booth
       return unless current_booth.blank?
+
       booths = current_user.poll_officer.todays_booths
       case booths.count
       when 0
@@ -43,6 +44,6 @@ class Officing::BaseController < ApplicationController
     end
 
     def current_booth
-      Poll::Booth.where(id: session[:booth_id]).first
+      Poll::Booth.find_by(id: session[:booth_id])
     end
 end

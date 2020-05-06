@@ -1,9 +1,9 @@
 class Newsletter < ApplicationRecord
-  has_many :activities, as: :actionable
+  has_many :activities, as: :actionable, inverse_of: :actionable
 
   validates :subject, presence: true
   validates :segment_recipient, presence: true
-  validates :from, presence: true, format: { with: /@/ }
+  validates :from, presence: true, format: { with: /\A.+@.+\Z/ }
   validates :body, presence: true
   validate :validate_segment_recipient
 
@@ -62,7 +62,7 @@ class Newsletter < ApplicationRecord
     end
 
     def log_delivery(recipient_email)
-      user = User.where(email: recipient_email).first
+      user = User.find_by(email: recipient_email)
       Activity.log(user, :email, self)
     end
 end

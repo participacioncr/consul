@@ -45,5 +45,4 @@ class SMSApi
       }
     }
   end
-
 end

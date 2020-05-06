@@ -1,11 +1,9 @@
 require "rails_helper"
 
 describe "Admin newsletter emails" do
-
   before do
-    admin = create(:administrator)
-    login_as(admin.user)
     create(:budget)
+    login_as(create(:administrator).user)
   end
 
   context "Show" do
@@ -17,6 +15,7 @@ describe "Admin newsletter emails" do
 
       visit admin_newsletter_path(newsletter)
 
+      expect(page).to have_link "Go back", href: admin_newsletters_path
       expect(page).to have_content "This is a subject"
       expect(page).to have_content I18n.t("admin.segment_recipient.#{newsletter.segment_recipient}")
       expect(page).to have_content "no-reply@consul.dev"
@@ -25,7 +24,7 @@ describe "Admin newsletter emails" do
 
     scenario "Invalid newsletter" do
       invalid_newsletter = create(:newsletter)
-      invalid_newsletter.update_attribute(:segment_recipient, "invalid_segment")
+      invalid_newsletter.update_column(:segment_recipient, "invalid_segment")
 
       visit admin_newsletter_path(invalid_newsletter)
 
@@ -52,7 +51,7 @@ describe "Admin newsletter emails" do
 
     scenario "Invalid newsletter" do
       invalid_newsletter = create(:newsletter)
-      invalid_newsletter.update_attribute(:segment_recipient, "invalid_segment")
+      invalid_newsletter.update_column(:segment_recipient, "invalid_segment")
 
       visit admin_newsletters_path
 
@@ -63,6 +62,8 @@ describe "Admin newsletter emails" do
   scenario "Create" do
     visit admin_newsletters_path
     click_link "New newsletter"
+
+    expect(page).to have_link "Go back", href: admin_newsletters_path
 
     fill_in_newsletter_form(subject: "This is a subject",
                             segment_recipient: "Proposal authors",
@@ -83,6 +84,8 @@ describe "Admin newsletter emails" do
     within("#newsletter_#{newsletter.id}") do
       click_link "Edit"
     end
+
+    expect(page).to have_link "Go back", href: admin_newsletters_path
 
     fill_in_newsletter_form(subject: "This is a subject",
                             segment_recipient: "Investment authors in the current budget",
@@ -130,7 +133,6 @@ describe "Admin newsletter emails" do
     scenario "Sends newsletter emails", :js do
       newsletter = create(:newsletter)
       visit admin_newsletter_path(newsletter)
-      total_users = newsletter.list_of_recipient_emails.count
 
       accept_confirm { click_link "Send" }
 
@@ -139,7 +141,7 @@ describe "Admin newsletter emails" do
 
     scenario "Invalid newsletter cannot be sent", :js do
       invalid_newsletter = create(:newsletter)
-      invalid_newsletter.update_attribute(:segment_recipient, "invalid_segment")
+      invalid_newsletter.update_column(:segment_recipient, "invalid_segment")
       visit admin_newsletter_path(invalid_newsletter)
 
       expect(page).not_to have_link("Send")

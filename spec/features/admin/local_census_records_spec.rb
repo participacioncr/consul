@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe "Admin local census records" do
-
   before do
     login_as(create(:administrator).user)
   end
@@ -19,7 +18,7 @@ describe "Admin local census records" do
     scenario "Should show existing local census records" do
       visit admin_local_census_records_path
 
-      expect(page).to have_content(local_census_record.document_type)
+      expect(page).to have_content("DNI")
       expect(page).to have_content(local_census_record.document_number)
       expect(page).to have_content(local_census_record.date_of_birth)
       expect(page).to have_content(local_census_record.postal_code)
@@ -41,7 +40,8 @@ describe "Admin local census records" do
     end
 
     scenario "Should show paginator" do
-      create_list(:local_census_record, 25)
+      allow(LocalCensusRecord).to receive(:default_per_page).and_return(3)
+      create_list(:local_census_record, 3)
       visit admin_local_census_records_path
 
       within ".pagination" do
@@ -86,7 +86,7 @@ describe "Admin local census records" do
     scenario "Should show successful notice after create valid record" do
       visit new_admin_local_census_record_path
 
-      fill_in :local_census_record_document_type, with: "DNI"
+      select "DNI", from: :local_census_record_document_type
       fill_in :local_census_record_document_number, with: "#DOCUMENT"
       select "1982", from: :local_census_record_date_of_birth_1i
       select "July", from: :local_census_record_date_of_birth_2i
@@ -118,7 +118,7 @@ describe "Admin local census records" do
     scenario "Should show successful notice after valid update" do
       visit edit_admin_local_census_record_path(local_census_record)
 
-      fill_in :local_census_record_document_type, with: "NIE"
+      select "Passport", from: :local_census_record_document_type
       fill_in :local_census_record_document_number, with: "#NIE_NUMBER"
       select "1982", from: :local_census_record_date_of_birth_1i
       select "August", from: :local_census_record_date_of_birth_2i
@@ -127,7 +127,7 @@ describe "Admin local census records" do
       click_on "Save"
 
       expect(page).to have_content "Local census record updated successfully!"
-      expect(page).to have_content "NIE"
+      expect(page).to have_content "Passport"
       expect(page).to have_content "#NIE_NUMBER"
       expect(page).to have_content "1982-08-08"
       expect(page).to have_content "07007"

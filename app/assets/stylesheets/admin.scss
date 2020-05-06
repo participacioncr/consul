@@ -291,8 +291,11 @@ $sidebar-active: #f4fcd0;
     margin-right: rem-calc(12);
   }
 
-  .admin-content {
+  .side-menu-and-admin-content {
+    @include side-menu-and-content;
+  }
 
+  .admin-content {
     .proposal-form {
       padding-top: 0;
     }
@@ -309,11 +312,6 @@ $sidebar-active: #f4fcd0;
 
 .for-print-only {
   display: none;
-}
-
-.admin-content {
-  overflow: scroll;
-  padding: $line-height !important;
 }
 
 @include breakpoint(medium) {
@@ -430,10 +428,6 @@ code {
   background: $sidebar;
   background: linear-gradient(to bottom, #245b80 0%, #488fb5 100%);
   border-right: 1px solid $border;
-
-  @include breakpoint(medium) {
-    min-height: rem-calc(1100);
-  }
 
   ul {
     list-style-type: none;
@@ -588,17 +582,6 @@ code {
   max-height: rem-calc(65);
   overflow: hidden;
   max-width: rem-calc(700);
-
-  &:hover {
-    max-height: rem-calc(1000);
-    transition: max-height 0.9s;
-  }
-}
-
-.log-value {
-  max-height: rem-calc(65);
-  overflow: hidden;
-  max-width: rem-calc(200);
 
   &:hover {
     max-height: rem-calc(1000);
@@ -786,10 +769,6 @@ code {
   font-weight: bold;
 }
 
-.hidden {
-  display: none;
-}
-
 table {
 
   .callout {
@@ -798,15 +777,6 @@ table {
     margin: 0;
     padding: 0 $line-height / 2;
   }
-}
-
-.info-type {
-  background-color: #ccf5ff;
-  padding: 15px;
-}
-
-.margin-description {
-  margin-top: rem-calc(20);
 }
 
 // 07. Legislation
@@ -1313,7 +1283,7 @@ table {
   }
 }
 
-.column-selecteable {
+.column-selectable {
 
   .hidden {
     display: none;
