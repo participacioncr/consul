@@ -1,5 +1,12 @@
 <% if @process.description.present? %>
   <p class="title"><%= t("legislation.processes.header.description") %></p>
+
+	<% if @process.image.present? %>
+        <hr>
+        <%= image_tag(@process.image_url(:large), alt: @process.title, id: "image") %>
+
+      <% end %>
+
   <%= markdown @process.description %>
 <% end %>
 

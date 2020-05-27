@@ -44,7 +44,7 @@
         mobile: @process.title
       %>
 
-      <% if @process.image.present? %>
+      <% if false and @process.image.present? %>
         <hr>
         <%= image_tag(@process.image_url(:large), alt: @process.title, id: "image") %>
       <% end %>

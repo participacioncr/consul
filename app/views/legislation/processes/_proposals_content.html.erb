@@ -23,7 +23,14 @@
                          id: "create-new-proposal" %></p>
         <% end %>
         <%= render "legislation/proposals/categories", taggable: process %>
-      </div>
+
+	<%=
+if params[:id].present? and (params[:id]=="4" or params[:id]=="10")
+ render "geozones" 
+end 
+
+%>
+
     </div>
   </div>
 </div>
