@@ -12,6 +12,17 @@
       <% end %>
     </div>
 
+    <%
+    =begin
+      Incluimos bloque de imagen
+    =end
+    %>
+    
+    <% if process.image.present? %>
+        <hr>
+        <%= image_tag(process.image_url(:large), alt: process.title, id: "image") %>
+      <% end %>
+
     <div class="small-12 medium-11 column end">
       <%= markdown(process.summary.present? ? process.summary : first_paragraph(process.description)) %>
     </div>
