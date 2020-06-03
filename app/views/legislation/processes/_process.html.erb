@@ -12,12 +12,6 @@
       <% end %>
     </div>
 
-    <%
-    =begin
-      Incluimos bloque de imagen
-    =end
-    %>
-    
     <% if process.image.present? %>
         <hr>
         <%= image_tag(process.image_url(:large), alt: process.title, id: "image") %>
