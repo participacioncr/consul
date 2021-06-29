@@ -3,6 +3,7 @@
     <div class="small-12 large-4 column">
       <h1 class="logo">
         <a target="_blank" href="https://www.ciudadreal.es/gobierno-abierto.html">Gobierno abierto</a>
+        <%= link_to t("layouts.header.open_gov", open: t("layouts.header.open")), "https://www.ciudadreal.es/gobierno-abierto.html" %>
       </h1>
 
       <p class="info">
